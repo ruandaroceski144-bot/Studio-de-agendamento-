@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Barber Pro</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090a0b;color:#f4f4f4;font-family:Arial,sans-serif}.app{max-width:1100px;margin:auto;min-height:100vh;background:#101113}.top{padding:18px 22px;border-bottom:1px solid #292a2e;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#101113ee;backdrop-filter:blur(10px);z-index:5}.logo{font-weight:900;font-size:23px}.gold{color:#d8ad55}.top small{color:#999}.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 70px)}aside{border-right:1px solid #292a2e;padding:18px}.navbtn{width:100%;padding:12px;border:0;background:transparent;color:#aaa;text-align:left;border-radius:10px;margin-bottom:6px;cursor:pointer}.navbtn.active,.navbtn:hover{background:#27231b;color:#e3bb67}.main{padding:22px}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#191a1d;border:1px solid #2a2b2f;border-radius:16px;padding:16px;margin-bottom:15px}.stat b{font-size:26px}.muted{color:#999;font-size:13px}.btn{background:#d8ad55;color:#111;border:0;padding:11px 15px;border-radius:10px;font-weight:800;cursor:pointer}.btn.dark{background:#292a2e;color:white}.btn.red{background:#7c3030;color:white}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:11px;text-align:left;border-bottom:1px solid #292a2e;font-size:14px}.tag{padding:5px 8px;border-radius:20px;background:#29251c;color:#e5bd6b;font-size:12px}.calendar{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.day{background:#202125;border-radius:12px;padding:10px}.day h4{margin:0 0 9px;color:#e0b85f}.time{padding:8px;background:#2b2c30;border-radius:8px;margin:5px 0;font-size:12px}.free{border-left:3px solid #67a36a}.busy{border-left:3px solid #a05a5a}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.plan{padding:17px;background:#1c1d20;border:1px solid #333;border-radius:15px}.plan.hot{border-color:#d8ad55}.price{font-size:25px;font-weight:900;margin:8px 0}.chat{height:320px;overflow:auto;background:#0d0e10;border-radius:12px;padding:12px}.msg{max-width:78%;padding:10px 12px;border-radius:12px;margin:7px 0;font-size:14px}.bot{background:#27282c}.user{background:#d8ad55;color:#111;margin-left:auto}.input{width:100%;background:#222327;border:1px solid #37383c;color:white;padding:11px;border-radius:9px;margin:7px 0}.split{display:grid;grid-template-columns:1.2fr .8fr;gap:15px}.toast{position:fixed;right:18px;bottom:18px;background:#1d241d;border:1px solid #507452;padding:13px 16px;border-radius:12px;display:none}
+@media(max-width:750px){.layout{grid-template-columns:1fr}aside{display:flex;overflow:auto;border-right:0;border-bottom:1px solid #292a2e;gap:5px}.navbtn{min-width:125px;margin:0}.grid{grid-template-columns:repeat(2,1fr)}.plans,.split{grid-template-columns:1fr}.calendar{grid-template-columns:1fr 1fr}.main{padding:14px}.top{padding:15px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="logo">STUDIO <span class="gold">BARBER PRO</span></div><small>Gestão completa da barbearia</small></header>
+<div class="layout">
+<aside>
+<button class="navbtn active" onclick="page('dashboard',this)">📊 Dashboard</button>
+<button class="navbtn" onclick="page('agenda',this)">📅 Agenda</button>
+<button class="navbtn" onclick="page('clientes',this)">👥 Clientes</button>
+<button class="navbtn" onclick="page('barbeiros',this)">💈 Barbeiros</button>
+<button class="navbtn" onclick="page('assinaturas',this)">💳 Assinaturas</button>
+<button class="navbtn" onclick="page('ia',this)">🤖 IA Atendente</button>
+<button class="navbtn" onclick="page('config',this)">⚙️ Configurações</button>
+</aside>
+<main class="main">
+<section id="dashboard" class="page active">
+<h2>Dashboard</h2><p class="muted">Visão geral da operação.</p>
+<div class="grid">
+<div class="card stat"><span class="muted">Agendamentos hoje</span><br><b>18</b></div>
+<div class="card stat"><span class="muted">Faturamento</span><br><b>R$ 1.240</b></div>
+<div class="card stat"><span class="muted">Clientes ativos</span><br><b>86</b></div>
+<div class="card stat"><span class="muted">Assinaturas</span><br><b>31</b></div>
+</div>
+<div class="split"><div class="card"><h3>Próximos horários</h3><table class="table"><tr><th>Hora</th><th>Cliente</th><th>Barbeiro</th><th>Status</th></tr>
+<tr><td>14:00</td><td>João</td><td>Ruan</td><td><span class="tag">Confirmado</span></td></tr><tr><td>15:00</td><td>Lucas</td><td>Mateus</td><td><span class="tag">Premium</span></td></tr><tr><td>16:00</td><td>Pedro</td><td>Ruan</td><td><span class="tag">Confirmado</span></td></tr></table></div>
+<div class="card"><h3>IA</h3><p class="muted">12 conversas hoje</p><p>9 agendamentos feitos pela IA</p><p>2 pedidos aguardando confirmação</p><button class="btn" onclick="page('ia')">Abrir IA</button></div></div>
+</section>
+
+<section id="agenda" class="page"><h2>Agenda dos barbeiros</h2><div class="row"><button class="btn dark">‹</button><b>Semana atual</b><button class="btn dark">›</button><select class="input" style="width:220px"><option>Todos os barbeiros</option><option>Ruan</option><option>Mateus</option><option>Lucas</option></select></div>
+<div class="calendar">
+<div class="day"><h4>SEG</h4><div class="time free">08:00 • Livre</div><div class="time busy">09:00 • João</div><div class="time free">10:00 • Livre</div><div class="time busy">11:00 • Marcos</div></div>
+<div class="day"><h4>TER</h4><div class="time busy">08:00 • Pedro</div><div class="time free">09:00 • Livre</div><div class="time busy">10:00 • Lucas</div><div class="time free">11:00 • Livre</div></div>
+<div class="day"><h4>QUA</h4><div class="time free">08:00 • Livre</div><div class="time free">09:00 • Livre</div><div class="time busy">10:00 • Bruno</div><div class="time free">11:00 • Livre</div></div>
+<div class="day"><h4>QUI</h4><div class="time busy">08:00 • André</div><div class="time busy">09:00 • Felipe</div><div class="time free">10:00 • Livre</div><div class="time free">11:00 • Livre</div></div>
+<div class="day"><h4>SEX</h4><div class="time busy">08:00 • João</div><div class="time free">09:00 • Livre</div><div class="time busy">10:00 • Lucas</div><div class="time free">11:00 • Livre</div></div>
+</div></section>
+
+<section id="clientes" class="page"><h2>Clientes</h2><div class="card"><input class="input" placeholder="🔎 Buscar cliente"><table class="table"><tr><th>Nome</th><th>WhatsApp</th><th>Último corte</th><th>Plano</th><th></th></tr><tr><td>João Silva</td><td>(49) 99999-1111</td><td>02/10</td><td>Premium</td><td><button class="btn dark">Abrir</button></td></tr><tr><td>Pedro Souza</td><td>(49) 98888-2222</td><td>28/09</td><td>Avulso</td><td><button class="btn dark">Abrir</button></td></tr></table></div></section>
+
+<section id="barbeiros" class="page"><h2>Equipe</h2><div class="grid"><div class="card"><h3>Ruan</h3><p class="muted">Degradê • 09:00–19:00</p><span class="tag">8 horários hoje</span></div><div class="card"><h3>Mateus</h3><p class="muted">Clássico e barba • 09:00–18:00</p><span class="tag">6 horários hoje</span></div><div class="card"><h3>Lucas</h3><p class="muted">Freestyle • 10:00–19:00</p><span class="tag">7 horários hoje</span></div></div><button class="btn" onclick="toast('Formulário de novo barbeiro aberto!')">+ Adicionar barbeiro</button></section>
+
+<section id="assinaturas" class="page"><h2>Assinaturas</h2><div class="plans">
+<div class="plan"><h3>Básico</h3><div class="price">R$ 89/mês</div><p>2 cortes por mês</p><p>Agenda normal</p><button class="btn dark">Editar plano</button></div>
+<div class="plan hot"><span class="tag">MAIS VENDIDO</span><h3>Premium</h3><div class="price">R$ 119/mês</div><p>4 cortes por mês</p><p>Prioridade na agenda</p><p>1 barba incluída</p><button class="btn">Editar plano</button></div>
+<div class="plan"><h3>VIP</h3><div class="price">R$ 179/mês</div><p>Cortes ilimitados* </p><p>Prioridade máxima</p><p>Barba incluída</p><button class="btn dark">Editar plano</button></div>
+</div><div class="card"><h3>Pagamentos</h3><p class="muted">Em produção, esta área será conectada a um gateway de pagamentos para cobrança recorrente.</p><button class="btn" onclick="toast('Integração de pagamentos preparada para a próxima etapa.')">Configurar pagamentos</button></div></section>
+
+<section id="ia" class="page"><h2>IA Atendente</h2><div class="split"><div class="card"><div class="chat" id="chat"><div class="msg bot">Olá! 👋 Sou a IA da Studio Barber. Posso consultar a agenda, encontrar um horário e reservar para o cliente.</div></div><input id="ai" class="input" placeholder="Ex.: Quero cortar amanhã às 15h com o Ruan" onkeydown="if(event.key==='Enter')sendAI()"><button class="btn" onclick="sendAI()">Enviar</button></div>
+<div class="card"><h3>Fluxo automático</h3><p>1. A IA entende o pedido.</p><p>2. Identifica barbeiro, serviço, data e horário.</p><p>3. Consulta a agenda real.</p><p>4. Se estiver livre, cria a reserva.</p><p>5. Envia confirmação ao cliente.</p><p class="muted">Se o horário estiver ocupado, oferece alternativas próximas.</p></div></div></section>
+
+<section id="config" class="page"><h2>Configurações</h2><div class="card"><h3>Dados da barbearia</h3><input class="input" value="Studio Barber"><input class="input" value="Rua Juventino França de Moraes"><input class="input" value="São Cristóvão do Sul - SC"><button class="btn" onclick="toast('Configurações salvas!')">Salvar</button></div><div class="card"><h3>Regras da agenda</h3><p>⏱️ Intervalo entre clientes: 10 minutos</p><p>📅 Antecedência mínima: 30 minutos</p><p>❌ Cancelamento: até 2 horas antes</p><button class="btn dark" onclick="toast('Regras atualizadas!')">Editar regras</button></div></section>
+</main></div></div><div class="toast" id="toast"></div>
+<script>
+function page(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active')}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2500)}
+function sendAI(){let i=document.getElementById('ai'),t=i.value.trim();if(!t)return;let c=document.getElementById('chat');c.innerHTML+=`<div class="msg user">${t}</div>`;let l=t.toLowerCase();let barber=l.includes('mateus')?'Mateus':l.includes('lucas')?'Lucas':'Ruan';let tm=(t.match(/\b(?:0?[8-9]|1[0-8]):00\b/)||[])[0]||null;let r=tm?`Entendi! Vou consultar a agenda do ${barber} para ${tm}. Se estiver livre, posso reservar e enviar a confirmação. Se estiver ocupado, ofereço os horários mais próximos.`:`Consigo fazer isso. Me diga a data, horário e, se quiser, o barbeiro. Vou verificar a disponibilidade antes de confirmar.`;c.innerHTML+=`<div class="msg bot">${r}</div>`;c.scrollTop=c.scrollHeight;i.value=''}
+</script>
+</body></html>
